@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyLibrary.UserMenuController">
+   <items>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <children>
+               <ListView fx:id="userBooksListView" layoutX="68.0" layoutY="131.0" prefHeight="180.0" prefWidth="159.0" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="113.0" />
+               <Label alignment="CENTER" layoutX="102.0" layoutY="55.0" prefHeight="37.0" prefWidth="91.0" style="-fx-background-radius: 15; -fx-background-color: gainsboro;" text="My Books" AnchorPane.bottomAnchor="306.0" AnchorPane.leftAnchor="102.0" AnchorPane.rightAnchor="102.0" AnchorPane.topAnchor="55.0" />
+               <Button fx:id="myBooksReturn" alignment="CENTER" layoutX="115.0" layoutY="336.0" mnemonicParsing="false" onAction="#returnBook" text="Return" AnchorPane.bottomAnchor="31.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="112.0" AnchorPane.topAnchor="336.0" />
+            </children>
+      </AnchorPane>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <children>
+               <Label alignment="CENTER" layoutX="130.0" layoutY="57.0" style="-fx-background-color: gainsboro; -fx-background-radius: 10;" text="Library" AnchorPane.bottomAnchor="306.0" AnchorPane.leftAnchor="102.0" AnchorPane.rightAnchor="102.0" AnchorPane.topAnchor="55.0" />
+               <ListView fx:id="libraryBooksListView" layoutX="48.0" layoutY="113.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="113.0" />
+               <Button fx:id="libraryBooksBorrow" alignment="CENTER" layoutX="115.0" layoutY="336.0" mnemonicParsing="false" onAction="#borrowBook" text="Borrow" AnchorPane.bottomAnchor="31.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="112.0" AnchorPane.topAnchor="336.0" />
+            </children>
+      </AnchorPane>
+   </items>
+</SplitPane>
