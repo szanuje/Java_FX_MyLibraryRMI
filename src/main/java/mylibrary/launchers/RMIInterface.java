@@ -1,4 +1,8 @@
-package MyLibrary;
+package mylibrary.launchers;
+
+import mylibrary.Book;
+import mylibrary.Library;
+import mylibrary.Person;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -15,6 +19,5 @@ public interface RMIInterface extends Remote {
 
     public Library accessLibrary() throws RemoteException;
 
-    public void serverStopAndSerialize() throws RemoteException;
 
 }

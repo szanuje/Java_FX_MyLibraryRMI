@@ -1,4 +1,4 @@
-package MyLibrary;
+package mylibrary;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -62,5 +62,20 @@ public class Library implements Serializable {
 
     public ArrayList<Book> allBooks() {
         return libraryBooks;
+    }
+
+    public ArrayList<Book> getLibraryBooks() {
+        return libraryBooks;
+    }
+
+    public void setLibraryBooks(ArrayList<Book> libraryBooks) {
+        this.libraryBooks = libraryBooks;
+    }
+
+    @Override
+    public String toString() {
+        return "Library{" +
+                "libraryBooks=" + libraryBooks +
+                '}';
     }
 }

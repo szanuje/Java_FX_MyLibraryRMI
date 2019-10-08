@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Class-Path: C:\Users\HITMEBABYONEMORETIME\Desktop\sieciowe\MyLibraryRM
- I\src\MyLibrary
-Main-Class: MyLibrary.Launcher
-

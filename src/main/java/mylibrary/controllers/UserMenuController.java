@@ -1,16 +1,18 @@
-package MyLibrary;
+package mylibrary.controllers;
 
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import mylibrary.Book;
+import mylibrary.Library;
+import mylibrary.Person;
+import mylibrary.launchers.RMIInterface;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -35,25 +37,24 @@ public class UserMenuController implements Initializable {
 
     public UserMenuController() throws Exception {
 
-        look_up = (RMIInterface) Naming.lookup("//localhost/MyServer");
     }
 
     public void showMyBooks() {
 //        Platform.runLater(() -> {
-            userBooksListView.setItems(userBooksObservableList);
-            userBooksObservableList.addAll(myUser.getPersonBooks());
-            userBooksListView.setCellFactory(param -> new ListCell<Book>() {
-                @Override
-                protected void updateItem(Book item, boolean empty) {
-                    super.updateItem(item, empty);
+        userBooksListView.setItems(userBooksObservableList);
+        userBooksObservableList.addAll(myUser.getPersonBooks());
+        userBooksListView.setCellFactory(param -> new ListCell<Book>() {
+            @Override
+            protected void updateItem(Book item, boolean empty) {
+                super.updateItem(item, empty);
 
-                    if (empty || item == null || item.getBookTitle() == null) {
-                        setText(null);
-                    } else {
-                        setText("\"" + item.getBookTitle() + "\"");
-                    }
+                if (empty || item == null || item.getBookTitle() == null) {
+                    setText(null);
+                } else {
+                    setText("\"" + item.getBookTitle() + "\"");
                 }
-            });
+            }
+        });
 //        });
     }
 
@@ -119,6 +120,10 @@ public class UserMenuController implements Initializable {
 
     public void setLibrary(Library l) {
         library = l;
+    }
+
+    public void setLook_up(RMIInterface parent_look_up) {
+        look_up = parent_look_up;
     }
 
     public void updateDatabaseAndClose() throws RemoteException {

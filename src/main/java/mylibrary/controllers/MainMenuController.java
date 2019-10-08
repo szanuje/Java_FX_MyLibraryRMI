@@ -1,4 +1,4 @@
-package MyLibrary;
+package mylibrary.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,16 +11,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import mylibrary.Person;
+import mylibrary.launchers.ClientOperation;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
-public class MainMenuController implements Initializable {
+public class MainMenuController extends ClientOperation implements Initializable {
 
     @FXML
     private Button loginTabSignIn;
@@ -47,13 +48,11 @@ public class MainMenuController implements Initializable {
     @FXML
     private Label badRegisterLabel;
 
-    private static RMIInterface look_up;
 
     public MainMenuController() throws MalformedURLException, RemoteException, NotBoundException {
-        look_up = (RMIInterface) Naming.lookup("//localhost/MyServer");
     }
 
-    public void loginPerson(ActionEvent e) throws NotBoundException{
+    public void loginPerson(ActionEvent e) throws NotBoundException {
 
         badLoginLabel.setText("");
 
@@ -68,11 +67,12 @@ public class MainMenuController implements Initializable {
                 loginTabEmail.clear();
                 loginTabPassword.clear();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("userMenu.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userMenu.fxml"));
                 SplitPane newWindow = (SplitPane) loader.load();
 
                 UserMenuController controller = loader.getController();
                 controller.setMainMenu(this);
+                controller.setLook_up(look_up);
                 controller.setMyUser(p);
                 controller.setLibrary(look_up.accessLibrary());
                 controller.showMyBooks();
@@ -99,10 +99,8 @@ public class MainMenuController implements Initializable {
                 });
             }
 
-        } catch (RemoteException rem) {
+        } catch (IOException rem) {
             rem.printStackTrace();
-        } catch (IOException io) {
-            io.printStackTrace();
         }
     }
 
@@ -131,7 +129,7 @@ public class MainMenuController implements Initializable {
                 registerTabPassword.clear();
                 setTabInPanel(0);
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("userRegistered.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userRegistered.fxml"));
                 AnchorPane newWindow = (AnchorPane) loader.load();
                 UserRegisteredController controller = loader.getController();
                 controller.setMainMenu(this);
@@ -143,9 +141,6 @@ public class MainMenuController implements Initializable {
                 stage.setScene(scene);
                 stage.show();
             }
-
-        } catch (RemoteException rem) {
-            rem.printStackTrace();
         } catch (IOException io) {
             io.printStackTrace();
         }

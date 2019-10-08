@@ -1,4 +1,4 @@
-package MyLibrary;
+package mylibrary;
 
 import java.io.Serializable;
 
@@ -6,6 +6,9 @@ public class Book implements Serializable {
 
     private String bookTitle;
     private boolean isBookBorrowed;
+
+    public Book() {
+    }
 
     public Book(String bookTitle) {
         this.bookTitle = bookTitle;
@@ -26,5 +29,13 @@ public class Book implements Serializable {
 
     public boolean isBookBorrowed() {
         return isBookBorrowed;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bookTitle='" + bookTitle + '\'' +
+                ", isBookBorrowed=" + isBookBorrowed +
+                '}';
     }
 }

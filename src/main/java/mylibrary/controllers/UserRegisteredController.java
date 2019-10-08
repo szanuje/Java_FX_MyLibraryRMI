@@ -1,4 +1,4 @@
-package MyLibrary;
+package mylibrary.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
